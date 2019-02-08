@@ -45,7 +45,7 @@
         "ui-droppable-active": "ui-state-highlight"
       },
       drop: function( event, ui ) {
-        deleteImage( ui.draggable );
+        addImage( ui.draggable );
       }
     });
  
@@ -56,20 +56,20 @@
         "ui-droppable-active": "custom-state-active"
       },
       drop: function( event, ui ) {
-        recycleImage( ui.draggable );
+        recoverImage( ui.draggable );
       }
     });
  
     // Image deletion function
-    var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off' title='Recycle this image' class='ui-icon ui-icon-refresh'>Recycle image</a>";
-    function deleteImage( $item ) {
+    var recover_icon = "<a href='link/to/recover/script/when/we/have/js/off' title='還原這隻角色' class='ui-icon ui-icon-refresh'>Recover image</a>";
+    function addImage( $item ) {
       $item.fadeOut(function() {
         var $list = $( "ul", $group ).length ?
           $( "ul", $group ) :
           $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $group );
  
         $item.find( "a.ui-icon-group" ).remove();
-        $item.append( recycle_icon ).appendTo( $list ).fadeIn(function() {
+        $item.append( recover_icon ).appendTo( $list ).fadeIn(function() {
           $item
             .animate({ width: "48px" })
             .find( "img" )
@@ -78,9 +78,9 @@
       });
     }
  
-    // Image recycle function
-    var group_icon = "<a href='link/to/group/script/when/we/have/js/off' title='Delete this image' class='ui-icon ui-icon-group'>Delete image</a>";
-    function recycleImage( $item ) {
+    // Image recover function
+    var group_icon = "<a href='link/to/group/script/when/we/have/js/off' title='加入這隻角色' class='ui-icon ui-icon-group'>Add image</a>";
+    function recoverImage( $item ) {
       $item.fadeOut(function() {
         $item
           .find( "a.ui-icon-refresh" )
@@ -123,11 +123,11 @@
         $target = $( event.target );
  
       if ( $target.is( "a.ui-icon-group" ) ) {
-        deleteImage( $item );
+        addImage( $item );
       } else if ( $target.is( "a.ui-icon-zoomin" ) ) {
         viewLargerImage( $target );
       } else if ( $target.is( "a.ui-icon-refresh" ) ) {
-        recycleImage( $item );
+        recoverImage( $item );
       }
  
       return false;
