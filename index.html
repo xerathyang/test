@@ -68,7 +68,7 @@
           $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $group );
  
         $item.find( "a.ui-icon-group" ).remove();
-        $item.append( recover_icon ).appendTo( $list ).fadeIn(function() {
+        $item.appendTo( $list ).fadeIn(function() {
           $item
             .animate({ width: "48px" })
             .find( "img" )
