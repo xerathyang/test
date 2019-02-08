@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Droppable - Simple photo manager</title>
+  <title>test</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <style>
@@ -60,8 +60,7 @@
       }
     });
  
-    // Image deletion function
-    var recover_icon = "<a href='link/to/recover/script/when/we/have/js/off' title='還原這隻角色' class='ui-icon ui-icon-refresh'>Recover image</a>";
+    // Char add function
     function addImage( $item ) {
       $item.fadeOut(function() {
         var $list = $( "ul", $group ).length ?
@@ -78,8 +77,7 @@
       });
     }
  
-    // Image recover function
-    var group_icon = "<a href='link/to/group/script/when/we/have/js/off' title='加入這隻角色' class='ui-icon ui-icon-group'>Add image</a>";
+    // Char recover function
     function recoverImage( $item ) {
       $item.fadeOut(function() {
         $item
@@ -87,7 +85,6 @@
             .remove()
           .end()
           .css( "width", "96px")
-          .append( group_icon )
           .find( "img" )
             .css( "height", "72px" )
           .end()
