@@ -1,217 +1,30 @@
-<!doctype html>
-<html lang="zh-Hant-TW">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>test</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="style/mainstyle.css">
-  <style>
-  #gallery { float: left; width: 65%; min-height: 12em; }
-  .gallery.custom-state-active { background: #eee; }
-  .gallery li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
-  .gallery li h5 { margin: 0 0 0.4em; cursor: move; }
-  .gallery li a { float: right; }
-  .gallery li a.ui-icon-zoomin { float: left; }
-  .gallery li img { width: 100%; cursor: move; }
- 
-  #group { float: right; width: 32%; min-height: 18em; padding: 1%; }
-  #group h4 { line-height: 16px; margin: 0 0 0.4em; }
-  #group h4 .ui-icon { float: left; }
-  #group .gallery h5 { display: none; }
-  </style>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
- 
-    // There's the gallery and the group
-    var $gallery = $( "#gallery" ),
-      $group = $( "#group" );
- 
-    // Let the gallery items be draggable
-    $( "li", $gallery ).draggable({
-      cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-      revert: "invalid", // when not dropped, the item will revert back to its initial position
-      containment: "document",
-      helper: "clone",
-      cursor: "move"
-    });
- 
-    // Let the group be droppable, accepting the gallery items
-    $group.droppable({
-      accept: "#gallery > li",
-      classes: {
-        "ui-droppable-active": "ui-state-highlight"
-      },
-      drop: function( event, ui ) {
-        addImage( ui.draggable );
-      }
-    });
- 
-    // Let the gallery be droppable as well, accepting items from the group
-    $gallery.droppable({
-      accept: "#group li",
-      classes: {
-        "ui-droppable-active": "custom-state-active"
-      },
-      drop: function( event, ui ) {
-        recoverImage( ui.draggable );
-      }
-    });
- 
-    // Char add function
-    function addImage( $item ) {
-      $item.fadeOut(function() {
-        var $list = $( "ul", $group ).length ?
-          $( "ul", $group ) :
-          $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $group );
- 
-        $item.find( "a.ui-icon-group" ).remove();
-        $item.appendTo( $list ).fadeIn(function() {
-          $item
-            .animate({ width: "48px" })
-            .find( "img" )
-              .animate({ height: "36px" });
-        });
-      });
-    }
- 
-    // Char recover function
-    function recoverImage( $item ) {
-      $item.fadeOut(function() {
-        $item
-          .find( "a.ui-icon-refresh" )
-            .remove()
-          .end()
-          .css( "width", "96px")
-          .find( "img" )
-            .css( "height", "72px" )
-          .end()
-          .appendTo( $gallery )
-          .fadeIn();
-      });
-    }
-	});
-  </script>
-</head>
-<body>
- 
-<div class="ui-widget ui-helper-clearfix">
- 
-<ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras</h5>
-    <img src="images/high_tatras_min.jpg" alt="The peaks of High Tatras" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 2</h5>
-    <img src="images/high_tatras2_min.jpg" alt="The chalet at the Green mountain lake" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 3</h5>
-    <img src="images/high_tatras3_min.jpg" alt="Planning the ascent" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-  <li class="ui-widget-content ui-corner-tr">
-    <h5 class="ui-widget-header">High Tatras 4</h5>
-    <img src="images/high_tatras4_min.jpg" alt="On top of Kozi kopka" width="96" height="72">
-  </li>
-</ul>
- 
-<div id="group" class="ui-widget-content ui-state-default">
-  <h4 class="ui-widget-header"><span class="ui-icon ui-icon-group">Group</span> 隊伍</h4>
-</div>
- 
-</div>
- 
- 
-</body>
+<!DOCTYPE html>
+<html lang=en>
+	<head>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+		<title>test</title>
+		<script>
+		
+		</script>
+		
+	</head>
+		<link rel="stylesheet" type="text/css" href="style/mainstyle.css"/>
+	<body>
+	<div class="header" id="header">
+			<div class="header-inner">
+				<a href="https://xerathyang.github.io/" class="inner">
+					<p font-size:20px>test<p/>
+				</a>
+			</div>
+		</div>
+	<h1>test</h1>
+	<hr />
+	<p>content</p>
+	<hr />
+	<a href="https://xerathyang.github.io/test/simulator">simulator</a>
+	
+	
+	
+	</body>
 </html>
