@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+		<title>test</title>
+		
+		<script>
+		
+		</script>
+
+		
+	</head>
+		<link rel="stylesheet" type="text/css" href="style/mainstyle.css"/>
+	<body>
+	<div class="container">
+		<div class="header" id="header">
+			<a href="https://xerathyang.github.io/" class="inner">test</a>
+		</div>
+		
+		<form class="filter">
+			<fieldset style="width:600px;text-align:center;">
+				<legend>篩選條件</legend>
+				<input type="checkbox" id="front" class="charposition">
+				"前衛"
+				<input type="checkbox" id="mid" class="charposition">
+				"中衛"
+				<input type="checkbox" id="back" class="charposition">
+				"後衛"
+				<br>
+				<input type="checkbox" id="rare1" class="rarity" value="1">
+				<span class="star">★</span>
+				<input type="checkbox" id="rare2" class="rarity" value="2">
+				<span class="star">★★</span>
+				<input type="checkbox" id="rare3" class="rarity" value="3">
+				<span class="star">★★★</span>
+				<br>
+				<input type="button" value="開始篩選" onclick="updateList();">
+			</fieldset>
+		</form>
+	</div>
+	<div class="sidebar">
+		<a href="https://xerathyang.github.io/test/simulator">simulator</a>
+	</div>
+
+	</body>
+</html>
