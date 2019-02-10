@@ -27,5 +27,8 @@ body {
 	padding-left: 10px;
 	font-size: 20px;
 }
+.filter{
+	margin-top: 5px;
+}
 a:link {text-decoration:none;}
 a:visited {color:#FFFFFF;}
