@@ -68,6 +68,11 @@
           $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $group );
  
         $item.find( "a.ui-icon-group" ).remove();
+		$item.appendTo( $list ).fadeIn(function() {
+			$item
+				.animate({ width: "96px" })
+				.find( "img" )
+				.animate({ height: "96px" });
         });
       });
     }
